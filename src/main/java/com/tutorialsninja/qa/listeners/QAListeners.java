@@ -108,5 +108,13 @@ public class QAListeners implements ITestListener {
 		
 	}
 	
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+	    // not implemented
+	  }
 
+	@Override
+	public void onTestFailedWithTimeout(ITestResult result) {
+	    onTestFailure(result);
+	  }
 }
