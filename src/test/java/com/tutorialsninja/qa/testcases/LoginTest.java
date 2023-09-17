@@ -33,6 +33,7 @@ public class LoginTest extends Base {
 		HomePage homepage= new HomePage(driver);
 //		homepage.clickOnMyAccount();
 //		loginPage = homepage.selectLoginOption();
+		System.out.println("");
 		loginPage=homepage.navaigateToLoginPage();
 
 	}
