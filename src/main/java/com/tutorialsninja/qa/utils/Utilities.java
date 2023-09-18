@@ -21,7 +21,7 @@ public class Utilities{
 	public static String generateEmailTimeStamp() {
 		Date date = new Date();
 		String emailStamp = date.toString().replace(" ", "_").replace(":", "_");
-		return "dheeruvish1608" + emailStamp + "@gmail.com";
+		return "dheeruvish1608"+emailStamp+"@gmail.com";
 	}
 
 	@DataProvider(name = "excelData")
@@ -77,9 +77,9 @@ public class Utilities{
 	public static String captureScreenShot(WebDriver driver,String testName) {
 
 		//String destinationPath = (System.getProperty("user.dir")+"\\Screenshots\\"+testName+".png");
+		
 		File srcScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		String destinationPath = (System.getProperty("user.dir")+"\\Screenshots\\"+testName+".png");
-		
 		
 		try {
 			FileUtils.copyFile(srcScreenshot, new File(destinationPath));
