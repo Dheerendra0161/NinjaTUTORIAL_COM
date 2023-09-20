@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 	WebDriver driver;
+	
 	@FindBy(id="input-email")
 	private WebElement emailButtonField;
 	
@@ -36,25 +37,13 @@ public class LoginPage {
 //	}
 	
 	
-	//Combined all the three method into one
+	
+	//Combined all the  above three method into one
 	
 	public void LoginEmailPasswordClickLogin(String emailText,String password) {
 		emailButtonField.sendKeys(emailText);
 		passwordField.sendKeys(password);
 		loginButton.click();
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }

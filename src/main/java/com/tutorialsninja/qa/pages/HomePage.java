@@ -38,7 +38,7 @@ public class HomePage {
 	public LoginPage navaigateToLoginPage() {
 		myAccoutDropDown.click();
 		loginOption.click();
-		return new LoginPage(driver);    //return here used to navigate to Login.
+		return new LoginPage(driver);    //return used here to navigate to Login.
 	}
 	
 	
@@ -57,7 +57,7 @@ public class HomePage {
 	public RegisterPage navigateToRegisterPage() {
 		myAccoutDropDown.click();
 		resisterOption.click();
-		return new RegisterPage(driver);   //return here used to navigate to Register.
+		return new RegisterPage(driver);   //return used  here to navigate to Register.
 		
 	}
 	

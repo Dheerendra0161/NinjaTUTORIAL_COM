@@ -68,18 +68,13 @@ public class RegisterPage {
 //		eneterConfirmPasswordNo.sendKeys(ConPassword);
 //	}
 
-	public void enterSubscribeRBField() {
-		SubscribeRadioButton.click();
-	}
+	
 	
 //	public void enterCheckBoxField() {
 //		checkBoxButton.click();
 //	}
 	
-	public void enterContinueField() {
-		continueButton.click();
-	}
-
+	
 	
 	public void EnterAllNeccessaryElement(String firstname,String lastname,String emailId,String Telephone,String password,String ConPassword) {
 		
@@ -90,8 +85,15 @@ public class RegisterPage {
 		eneterPasswordNo.sendKeys(password);
 		eneterConfirmPasswordNo.sendKeys(ConPassword);
 		checkBoxButton.click();
-		
-		
+	}
+	
+		public void enterSubscribeRBField() {
+			SubscribeRadioButton.click();
+		}
+		public void enterContinueField() {
+			continueButton.click();
+		}
+
 	}
 	
 	
@@ -107,4 +109,4 @@ public class RegisterPage {
 	
 	
 	
-}
+
