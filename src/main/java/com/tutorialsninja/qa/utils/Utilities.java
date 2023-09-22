@@ -22,10 +22,11 @@ public class Utilities{
 		Date date = new Date();
 		String emailStamp = date.toString().replace(" ", "_").replace(":", "_");
 		return "dheeruvish1608"+emailStamp+"@gmail.com";
+		
 	}
 
-	@DataProvider(name = "excelData")
-	public static Object[][] getTestDaraFromExcel(String SheetName) throws IOException {
+	//@DataProvider(name = "excelData")
+	public static Object[][] getTestDataFromExcel(String SheetName) throws IOException {
 
 		
 		    FileInputStream fis = new FileInputStream(System.getProperty("user.dir")

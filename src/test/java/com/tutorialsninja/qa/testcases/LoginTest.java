@@ -142,7 +142,7 @@ public class LoginTest extends Base {
 
 	@DataProvider(name = "excelData")
 	public Object[][] test_Data() throws IOException {
-		Object[][] Data = Utilities.getTestDaraFromExcel("Login");
+		Object[][] Data = Utilities.getTestDataFromExcel("Login");
 		return Data;
 	}
 
