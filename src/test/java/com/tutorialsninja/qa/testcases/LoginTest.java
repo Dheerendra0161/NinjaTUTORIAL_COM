@@ -8,7 +8,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
 import com.tutorialsninja.qa.base.Base;
+import com.tutorialsninja.qa.listeners.QAListeners;
 import com.tutorialsninja.qa.pages.HomePage;
 import com.tutorialsninja.qa.pages.LoginPage;
 import com.tutorialsninja.qa.utils.Utilities;
@@ -18,6 +20,8 @@ public class LoginTest extends Base {
 	public WebDriver driver;
 
 	LoginPage loginPage;
+
+	QAListeners logs;
 
 	public LoginTest() throws IOException {
 		super();
@@ -29,10 +33,7 @@ public class LoginTest extends Base {
 	public void setup() {
 		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browser"));
 		HomePage homepage = new HomePage(driver);
-//		homepage.clickOnMyAccount();
-//		loginPage = homepage.selectLoginOption();
 		loginPage = homepage.navaigateToLoginPage();
-
 	}
 
 	@AfterMethod
@@ -40,110 +41,71 @@ public class LoginTest extends Base {
 		driver.quit();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = { "Smoke", "Sanity" })
 	public void verifyLoginWithValidCresentials() {
 
-		// loginPage=new LoginPage(driver);
-
-//		loginPage.enterEmailAdress(prop.getProperty("Email"));
-//		loginPage.enterPassword(prop.getProperty("Password"));
-//		loginPage.clickAtLoginButton();
-
+		// We are using logs for reporting like Cucumber
+		logs.printLog("Login with valid credential");
 		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Email"), prop.getProperty("Password"));
 
-//		driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("Email"));
-//		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("Password"));
-//		driver.findElement(By.xpath("//input[@value='Login']")).click();
+		logs.printLog("Successfully verify dashboard");
+		// steps
 
-//		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed(),
-//				"Edit Your Accout not displayed");
+		logs.printLog("Navigate to register link");
+		// steps
 
 	}
 
-	@Test(priority = 2)
-	public void verifyLoginWithInvalidCredentials() {
-		// loginPage=new LoginPage(driver);
+	@Test(priority = 1, groups = { "Smoke", "Sanity" })
+	public void Failed_verifyLoginWithValidCresentials() {
+		logs.printLog("Login with valid credential");
+		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Emai"), prop.getProperty("Password"));
 
-//		loginPage.enterEmailAdress(Utilities.generateEmailTimeStamp());
-//		loginPage.enterPassword(dataProp.getProperty("invalidpassword"));
-//		loginPage.clickAtLoginButton();
+		logs.printLog("Successfully verify dashboard");
+		// steps
+
+		logs.printLog("Navigate to register link");
+		// steps
+
+	}
+
+	@Test(priority = 2, groups = { "Sanity" })
+	public void verifyLoginWithInvalidCredentials() {
 
 		loginPage.LoginEmailPasswordClickLogin(Utilities.generateEmailTimeStamp(),
 				dataProp.getProperty("invalidpassword"));
-
-//		driver.findElement(By.id("input-email")).sendKeys(Utilities.generateEmailTimeStamp());
-//		driver.findElement(By.id("input-password")).sendKeys(dataProp.getProperty("invalidpassword"));
-//		driver.findElement(By.xpath("//input[@value='Login']")).click();
-
-//		String actualWarningMessage = driver
-//				.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-//		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password";
-//		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage));
-
 	}
 
 	@Test(priority = 3)
 	public void verifyLoginWithInvalidEmailAndValidPassword() {
-
-		// loginPage=new LoginPage(driver);
-
-//		loginPage.enterEmailAdress(Utilities.generateEmailTimeStamp());
-//		loginPage.enterPassword(prop.getProperty("Password"));
-//		loginPage.clickAtLoginButton();
-
 		loginPage.LoginEmailPasswordClickLogin(Utilities.generateEmailTimeStamp(), prop.getProperty("Password"));
-
-//		driver.findElement(By.id("input-email")).sendKeys(Utilities.generateEmailTimeStamp());
-//		driver.findElement(By.id("input-password")).sendKeys(prop.getProperty("Password"));
-//		driver.findElement(By.xpath("//input[@value='Login']")).click();
-
-//		String actualWarningMessage = driver
-//				.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-//		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password";
-//		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage));
 
 	}
 
 	@Test(priority = 4)
 	public void verifyLoginWith_ValidEmailAnd_InvalidPassword() {
-
-		// LoginPage=new LoginPage(driver);
-//2		loginPage.enterEmailAdress(prop.getProperty("Email"));
-//		loginPage.enterPassword(dataProp.getProperty("invalidpassword"));
-//		loginPage.clickAtLoginButton();
-
 		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Email"), dataProp.getProperty("invalidpassword"));
-
-//1		driver.findElement(By.id("input-email")).sendKeys(prop.getProperty("Email"));
-//		driver.findElement(By.id("input-password")).sendKeys(dataProp.getProperty("invalidpassword"));
-//		driver.findElement(By.xpath("//input[@value='Login']")).click();
-
-//		String actualWarningMessage = driver
-//				.findElement(By.xpath("//div[@class='alert alert-danger alert-dismissible']")).getText();
-//		String expectedWarningMessage = "Warning: No match for E-Mail Address and/or Password";
-//		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage));
 
 	}
 
 	@Test(priority = 5, dataProvider = "excelData")
 	public void verifyLoginWith_ValidEmailAnd_InvalidPassword1(String Email, String Password) throws IOException {
-// 		LoginPage=new LoginPage(driver);
-//		loginPage.enterEmailAdress(Email);
-//		loginPage.enterPassword(Password);
-//		loginPage.clickAtLoginButton();
-
 		loginPage.LoginEmailPasswordClickLogin(Email, Password);
-
-//		driver.findElement(By.id("input-email")).sendKeys(Email);
-//		driver.findElement(By.id("input-password")).sendKeys(Password);
-//		driver.findElement(By.xpath("//input[@value='Login']")).click();
-		
 	}
 
 	@DataProvider(name = "excelData")
 	public Object[][] test_Data() throws IOException {
-		Object[][] Data = Utilities.getTestDataFromExcel("Login");
+		Object[][] Data = Utilities.getTestDataFromExcel("Login"); // It always return list of 2 Dimensional Array
+																	// Object
 		return Data;
+	}
+
+	@Test()
+	public void SetterGetterMethods() {
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.setUsernameInput("dheerendra0161@gmail.com");
+		loginPage.setPasswordInput("Marikpur@1");
+		loginPage.clickLoginButton();
 	}
 
 }

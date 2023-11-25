@@ -12,7 +12,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentReporter {
 	
 	public static ExtentReports generateExtentReport() throws IOException {
-	ExtentReports extentReport=new ExtentReports();
+
 	File file = new File(System.getProperty("user.dir")+"\\Screenshots\\ExtentReport\\ExtentReport.html");
 	ExtentSparkReporter sparkReporter = new ExtentSparkReporter(file);
 	sparkReporter.config().setTheme(Theme.DARK);
@@ -20,15 +20,14 @@ public class ExtentReporter {
 	sparkReporter.config().setDocumentTitle("TutorialNinja Automation Report");
 	sparkReporter.config().setTimeStampFormat("dd/mm/yyyy hh:mm:ss");
 	
-	extentReport.attachReporter(sparkReporter);
-	
-	Properties prop =new Properties();
-	//FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\config\\Config.properties");
 	FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
 			+ "\\src\\main\\java\\com\\tutorialsninja\\qa\\config\\Config.properties");
+	Properties prop =new Properties();
 	prop.load(fis);
 	
-	extentReport.setSystemInfo("Application URL", 	prop.getProperty("url"));
+	ExtentReports extentReport=new ExtentReports();
+	extentReport.attachReporter(sparkReporter);
+	extentReport.setSystemInfo("Application URL", prop.getProperty("url"));
 	extentReport.setSystemInfo("Browser Name", prop.getProperty("browser"));
 	extentReport.setSystemInfo("Operating System", prop.getProperty("os.name"));
 	extentReport.setSystemInfo("User Name", prop.getProperty("user.name"));

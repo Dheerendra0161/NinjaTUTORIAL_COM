@@ -49,36 +49,10 @@ public class Utilities{
 		    wbookObj.close();
 		    return testData;
 		}
-	
-		
-//	@DataProvider(name = "excelData")
-//	public static Object[][] getTestDaraFromExcel1(String SheetName) throws IOException {
-//
-//		
-//		    FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
-//		            + "\\src\\main\\java\\com\\tutorialsninja\\qa\\testData\\TutorialsNinjaTestData.xlsx");
-//		    Workbook wbookObj = WorkbookFactory.create(fis);
-//		    Sheet sheetName = wbookObj.getSheet(SheetName);
-//
-//		    Iterator<Row> rowIterator = sheetName.iterator();
-//		    while (rowIterator.hasNext()) {
-//		        Row row = rowIterator.next();
-//		        Iterator<Cell> cellIterator = row.iterator();
-//		        while (cellIterator.hasNext()) {
-//		            Cell cell = cellIterator.next();
-//		            // Process the cell value
-//		        }
-//		    }
-//		    DataFormatter dataFormatter =  dataFormatter.formatCellValue(cell);
-//		   
-//		    wbookObj.close();
-//		    return testData;
-//		}
+
 	
 	public static String captureScreenShot(WebDriver driver,String testName) {
 
-		//String destinationPath = (System.getProperty("user.dir")+"\\Screenshots\\"+testName+".png");
-		
 		File srcScreenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		String destinationPath = (System.getProperty("user.dir")+"\\Screenshots\\"+testName+".png");
 		

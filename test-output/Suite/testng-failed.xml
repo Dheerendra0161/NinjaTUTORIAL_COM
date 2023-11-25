@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="methods" name="Parallel Tests1(failed)">
+    <classes>
+      <class name="com.tutorialsninja.qa.testcases.RegisterTest">
+        <methods>
+          <include name="setup"/>
+          <include name="VerifyRegisteringAnAccountWith_ValidEmailAdress"/>
+          <include name="VerifyRegisteringAnAccountWith_AllFields"/>
+          <include name="tearDown"/>
+          <include name="VerifyRegisteringAnAccountWith_MandatoryFields"/>
+          <include name="VerifyRegisteringAnAccount_Without_FillingAnyDetails"/>
+        </methods>
+      </class> <!-- com.tutorialsninja.qa.testcases.RegisterTest -->
+    </classes>
+  </test> <!-- Parallel Tests1(failed) -->
+</suite> <!-- Failed suite [Suite] -->

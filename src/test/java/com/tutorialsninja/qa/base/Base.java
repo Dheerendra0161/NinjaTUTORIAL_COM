@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+
 public class Base {
 
 	WebDriver driver;
@@ -49,8 +50,8 @@ public class Base {
 		}
 
 		driver.manage().window().maximize();
-		// driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
 		driver.get(prop.getProperty("url"));
 		return driver;
 	}

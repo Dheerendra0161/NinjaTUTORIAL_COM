@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="GroupSuite">
+	
+	<test name="SanityTests">
+		<groups>
+			<run>
+				<include name="Sanity" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.tutorialsninja.qa.testcases.LoginTest"/>
+			<class name="com.tutorialsninja.qa.testcases.RegisterTest"/>
+		</classes>
+	</test>
+
+	<test name="SmokeTests">
+		<groups>
+			<run>
+				<include name="Smoke" />
+			</run>
+		</groups>
+		<classes>
+		<class name="com.tutorialsninja.qa.testcases.LoginTest"/>
+			<class name="com.tutorialsninja.qa.testcases.RegisterTest"/>
+		</classes>
+	</test>
+</suite>

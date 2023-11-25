@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ParallelSuite" parallel="methods" thread-count="2">
+	<test name="Test1" >
+		<classes>
+			<class name="com.tutorialsninja.qa.testcases.LoginTest">
+				<methods>
+					<exclude name="verifyLoginWith_ValidEmailAnd_InvalidPassword1" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
