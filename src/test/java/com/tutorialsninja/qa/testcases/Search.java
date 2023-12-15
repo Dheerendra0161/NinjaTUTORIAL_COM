@@ -21,7 +21,7 @@ public class Search extends Base {
 
 	public Search() throws IOException {
 		super();
-//	Note:	To explicitly call the superclass constructor from the subclass constructor, we use super() keyword. 
+//	Note:To explicitly call the superclass constructor from the subclass constructor, we use super() keyword. 
 //		super() can be used only inside the subclass constructor and must be the first statement.
 	}
 

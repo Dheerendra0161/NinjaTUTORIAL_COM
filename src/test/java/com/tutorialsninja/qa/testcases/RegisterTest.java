@@ -33,7 +33,7 @@ public class RegisterTest extends Base {
 		driver.quit();
 	}
 
-	@Test(priority=1)
+	@Test(priority = 1)
 
 	public void VerifyRegisteringAnAccountWith_MandatoryFields() {
 
@@ -43,7 +43,7 @@ public class RegisterTest extends Base {
 		registerpage.enterContinueField();
 	}
 
-	@Test(priority = 2,groups= {"Sanity"})
+	@Test(priority = 2, groups = { "Sanity" })
 	public void VerifyRegisteringAnAccountWith_AllFields() {
 
 		registerpage.EnterAllNeccessaryElement(dataProp.getProperty("firstName"), dataProp.getProperty("lastName"),
@@ -53,7 +53,7 @@ public class RegisterTest extends Base {
 		registerpage.enterContinueField();
 	}
 
-	@Test(priority = 3,groups = { "Smoke", "Sanity" })
+	@Test(priority = 3, groups = { "Smoke", "Sanity" })
 	public void VerifyRegisteringAnAccountWith_ValidEmailAdress() {
 		registerpage.EnterAllNeccessaryElement(dataProp.getProperty("firstName"), dataProp.getProperty("lastName"),
 				prop.getProperty("Email"), dataProp.getProperty("telePhone"), dataProp.getProperty("inputPass"),

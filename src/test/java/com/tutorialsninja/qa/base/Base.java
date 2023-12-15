@@ -15,11 +15,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 
-	WebDriver driver;
+	public  WebDriver driver;
 	public Properties prop;
 	public Properties dataProp;
 
-	// constructor
+	// Create a constructor
 	public Base() throws IOException {
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
 				+ "\\src\\main\\java\\com\\tutorialsninja\\qa\\config\\Config.properties");
@@ -56,4 +56,6 @@ public class Base {
 		return driver;
 	}
 
+	
+	
 }

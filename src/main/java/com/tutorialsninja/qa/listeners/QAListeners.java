@@ -4,6 +4,8 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -11,7 +13,9 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
 import com.tutorialsninja.qa.utils.ExtentReporter;
 import com.tutorialsninja.qa.utils.Utilities;
 
@@ -40,7 +44,7 @@ public class QAListeners implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		//extentTest.log(Status.PASS, result.getName()+" Got succesfully executed");
+		extentTest.log(Status.PASS, result.getName()+" Got succesfully executed");
 		
 	}
 	
@@ -51,16 +55,22 @@ public class QAListeners implements ITestListener {
 		
 		try {
 			driver = (WebDriver)result.getTestClass().getRealClass().getDeclaredField("driver").get(result.getInstance());
+		
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
 			e.printStackTrace();
 		}
-
-		String destinationPath= Utilities.captureScreenShot(driver, result.getName());
-		extentTest.addScreenCaptureFromPath(destinationPath);
-		extentTest.log(Status.INFO, result.getThrowable());
+		String screenshot=((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+		//String destinationPath= Utilities.captureScreenShotReport(driver, result.getName());
+		//String destinationPath=Utilities.captureScreenShotReport(driver,result.getName());
+		extentTest.addScreenCaptureFromBase64String(screenshot);
+		
+		//extentTest.log(Status.INFO, result.getThrowable());
 		extentTest.log(Status.FAIL,result.getName()+" Got failed");
+		//extentTest.log(Status.FAIL, MediaEntityBuilder.createScreenCaptureFromPath(screenshot).build());
 	}
 
+	
+	
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		extentTest.log(Status.INFO, result.getThrowable());
@@ -92,6 +102,8 @@ public class QAListeners implements ITestListener {
 	    onTestFailure(result);
 	  }
 	
+	
+	//Use it to report the test steps Like in Cucumber
 	public QAListeners printLog(String log) {
 		extentTest.log(Status.INFO, log);
 		return new QAListeners();

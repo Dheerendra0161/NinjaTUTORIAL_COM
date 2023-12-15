@@ -13,7 +13,7 @@
 			<class name="com.tutorialsninja.qa.testcases.LoginTest">
 				<methods>
 					<include name="verifyLoginWithValidCresentials"></include>
-					<include name="Failed_verifyLoginWithValidCresentials"></include>
+					<!-- <include name="Failed_verifyLoginWithValidCresentials"></include>-->
 				</methods>
 			</class>
 		</classes>

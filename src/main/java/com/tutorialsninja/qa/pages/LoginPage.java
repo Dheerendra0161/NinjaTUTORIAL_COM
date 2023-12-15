@@ -14,9 +14,31 @@ public class LoginPage {
 	@FindBy(id = "input-password")
 	private WebElement passwordField;
 
-	@FindBy(id = "input-email")
+	@FindBy(xpath = "//input[@class='btn btn-primary']")
 	private WebElement loginButton;
 
+	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
+	private WebElement WarningMessage;
+
+	
+	public boolean isElementDisplayAndEnabled(WebElement ele) {
+		boolean status;
+		try {
+			status = ele.isDisplayed();
+			status = ele.isEnabled();
+		} catch (Exception e) {
+			status = false;
+		}
+		return status;
+	}
+
+	public boolean warningMessage() {
+		return isElementDisplayAndEnabled(WarningMessage);
+	}
+
+	
+	
+	
 	// Make constructor
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -31,6 +53,8 @@ public class LoginPage {
 		loginButton.click();
 	}
 
+	
+	
 	// Encapsulation In java selenium
 	// Getter method to access the username input field
 	public WebElement getUsernameInput() {

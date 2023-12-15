@@ -3,6 +3,7 @@ package com.tutorialsninja.qa.testcases;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -31,6 +32,7 @@ public class LoginTest extends Base {
 
 	@BeforeMethod
 	public void setup() {
+		System.setProperty("webdriver.http.factory", "jdk-http-client"); // Just to launch chrome setting after updation
 		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browser"));
 		HomePage homepage = new HomePage(driver);
 		loginPage = homepage.navaigateToLoginPage();
@@ -38,7 +40,7 @@ public class LoginTest extends Base {
 
 	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		// driver.quit();
 	}
 
 	@Test(priority = 1, groups = { "Smoke", "Sanity" })
@@ -56,7 +58,7 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test(priority = 1, groups = { "Smoke", "Sanity" })
+	@Test(priority = -1, groups = { "Smoke", "Sanity" })
 	public void Failed_verifyLoginWithValidCresentials() {
 		logs.printLog("Login with valid credential");
 		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Emai"), prop.getProperty("Password"));
@@ -69,13 +71,23 @@ public class LoginTest extends Base {
 
 	}
 
+	// if there is no priority than its default value is 0. It will run in
+	// alphabetical order
+	// Priority:(Negative(-ve)value>without priority(0)ie.Alphabatic
+	// sequence>Positive(+ve) value
+	
+	
+
 	@Test(priority = 2, groups = { "Sanity" })
 	public void verifyLoginWithInvalidCredentials() {
 
 		loginPage.LoginEmailPasswordClickLogin(Utilities.generateEmailTimeStamp(),
 				dataProp.getProperty("invalidpassword"));
+		Assert.assertTrue(loginPage.warningMessage());
 	}
 
+	
+	
 	@Test(priority = 3)
 	public void verifyLoginWithInvalidEmailAndValidPassword() {
 		loginPage.LoginEmailPasswordClickLogin(Utilities.generateEmailTimeStamp(), prop.getProperty("Password"));
@@ -96,7 +108,6 @@ public class LoginTest extends Base {
 	@DataProvider(name = "excelData")
 	public Object[][] test_Data() throws IOException {
 		Object[][] Data = Utilities.getTestDataFromExcel("Login"); // It always return list of 2 Dimensional Array
-																	// Object
 		return Data;
 	}
 
