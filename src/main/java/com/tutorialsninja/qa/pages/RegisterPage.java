@@ -35,6 +35,9 @@ public class RegisterPage {
 	@FindBy(xpath = "//input[@value='Continue']")
 	private WebElement continueButton;
 
+	@FindBy(xpath = "//div[text()='Warning: E-Mail Address is already registered!']")
+	private WebElement WarningAccountExist;
+
 	public RegisterPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -58,6 +61,10 @@ public class RegisterPage {
 
 	public void enterContinueField() {
 		continueButton.click();
+	}
+
+	public String AccountAlreadyExist() {
+		return WarningAccountExist.getText();
 	}
 
 }

@@ -19,6 +19,16 @@ public class LoginPage {
 
 	@FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
 	private WebElement WarningMessage;
+	
+	
+	
+
+	
+	// Make constructor
+	public LoginPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 
 	
 	public boolean isElementDisplayAndEnabled(WebElement ele) {
@@ -38,13 +48,6 @@ public class LoginPage {
 
 	
 	
-	
-	// Make constructor
-	public LoginPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
-
 	// Combined all the above three method into one
 
 	public void LoginEmailPasswordClickLogin(String emailText, String password) {

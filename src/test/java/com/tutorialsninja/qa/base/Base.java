@@ -37,6 +37,7 @@ public class Base {
 		// String browser = prop.getProperty("browser");
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.http.factory", "jdk-http-client"); // Just to launch chrome setting after updation
 			driver = new ChromeDriver();
 		} else if (browser.equalsIgnoreCase("edge")) {
 			WebDriverManager.edgedriver().setup();

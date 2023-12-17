@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
+<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-15T16:16:50 IST" name="Default suite" finished-at="2023-12-15T16:16:57 IST" duration-ms="6436">
+  <suite started-at="2023-12-15T23:54:53 IST" name="Default suite" finished-at="2023-12-15T23:55:02 IST" duration-ms="8720">
     <groups>
-      <group name="Sanity">
-        <method signature="LoginTest.verifyLoginWithInvalidCredentials()[pri:2, instance:com.tutorialsninja.qa.testcases.LoginTest@4e08711f]" name="verifyLoginWithInvalidCredentials" class="com.tutorialsninja.qa.testcases.LoginTest"/>
-      </group> <!-- Sanity -->
     </groups>
-    <test started-at="2023-12-15T16:16:50 IST" name="Default test" finished-at="2023-12-15T16:16:57 IST" duration-ms="6436">
-      <class name="com.tutorialsninja.qa.testcases.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.tutorialsninja.qa.testcases.LoginTest@4e08711f]" started-at="2023-12-15T16:16:50 IST" name="setup" finished-at="2023-12-15T16:16:56 IST" duration-ms="5414" status="PASS">
+    <test started-at="2023-12-15T23:54:53 IST" name="Default test" finished-at="2023-12-15T23:55:02 IST" duration-ms="8720">
+      <class name="com.tutorialsninja.qa.testcases.RegisterTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.tutorialsninja.qa.testcases.RegisterTest@9d5509a]" started-at="2023-12-15T23:54:53 IST" name="setup" finished-at="2023-12-15T23:55:01 IST" duration-ms="7979" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLoginWithInvalidCredentials()[pri:2, instance:com.tutorialsninja.qa.testcases.LoginTest@4e08711f]" started-at="2023-12-15T16:16:56 IST" name="verifyLoginWithInvalidCredentials" finished-at="2023-12-15T16:16:57 IST" duration-ms="950" status="PASS">
+        <test-method signature="VerifyRegisteringAnAccount_Without_FillingAnyDetails()[pri:4, instance:com.tutorialsninja.qa.testcases.RegisterTest@9d5509a]" started-at="2023-12-15T23:55:01 IST" name="VerifyRegisteringAnAccount_Without_FillingAnyDetails" finished-at="2023-12-15T23:55:02 IST" duration-ms="641" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLoginWithInvalidCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.tutorialsninja.qa.testcases.LoginTest@4e08711f]" started-at="2023-12-15T16:16:57 IST" name="tearDown" finished-at="2023-12-15T16:16:57 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- VerifyRegisteringAnAccount_Without_FillingAnyDetails -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.tutorialsninja.qa.testcases.RegisterTest@9d5509a]" started-at="2023-12-15T23:55:02 IST" name="tearDown" finished-at="2023-12-15T23:55:02 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.tutorialsninja.qa.testcases.LoginTest -->
+      </class> <!-- com.tutorialsninja.qa.testcases.RegisterTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -3,11 +3,13 @@ package com.tutorialsninja.qa.testcases;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.tutorialsninja.qa.base.Base;
+import com.tutorialsninja.qa.pages.AccountSuccessPage;
 import com.tutorialsninja.qa.pages.HomePage;
 import com.tutorialsninja.qa.pages.RegisterPage;
 import com.tutorialsninja.qa.utils.Utilities;
@@ -15,6 +17,7 @@ import com.tutorialsninja.qa.utils.Utilities;
 public class RegisterTest extends Base {
 	public WebDriver driver;
 	RegisterPage registerpage;
+	AccountSuccessPage accountSuccessPage;
 
 	public RegisterTest() throws IOException {
 		super();
@@ -26,11 +29,13 @@ public class RegisterTest extends Base {
 		HomePage homepage = new HomePage(driver);
 		registerpage = homepage.navigateToRegisterPage();
 
+		accountSuccessPage = new AccountSuccessPage(driver);
+
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		driver.quit();
+		// driver.quit();
 	}
 
 	@Test(priority = 1)
@@ -51,15 +56,21 @@ public class RegisterTest extends Base {
 				dataProp.getProperty("inputPass"), dataProp.getProperty("inputPass"));
 		registerpage.enterSubscribeRBField();
 		registerpage.enterContinueField();
+
+		Assert.assertEquals(accountSuccessPage.accountcreated(),
+				"Congratulations! Your new account has been successfully created!");
 	}
 
 	@Test(priority = 3, groups = { "Smoke", "Sanity" })
-	public void VerifyRegisteringAnAccountWith_ValidEmailAdress() {
+	public void VerifyRegistration_alreadyExisting_ValidEmailAdress() {
 		registerpage.EnterAllNeccessaryElement(dataProp.getProperty("firstName"), dataProp.getProperty("lastName"),
 				prop.getProperty("Email"), dataProp.getProperty("telePhone"), dataProp.getProperty("inputPass"),
 				dataProp.getProperty("inputPass"));
 		registerpage.enterSubscribeRBField();
 		registerpage.enterContinueField();
+		String accountExist = registerpage.AccountAlreadyExist();
+		System.out.println(accountExist);
+		Assert.assertEquals(accountExist, "Warning: E-Mail Address is already registered!");
 
 	}
 

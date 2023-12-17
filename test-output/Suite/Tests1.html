@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Dec 05 15:08:59 IST 2023</td>
+<td>Started on:</td><td>Fri Dec 15 22:49:41 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>51 seconds (51251 ms)</td>
+<tr><td>Total time:</td><td>20 seconds (20039 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,14 +77,19 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.tutorialsninja.qa.testcases.LoginTest.verifyLoginWithValidCresentials()'><b>verifyLoginWithValidCresentials</b><br>Test class: com.tutorialsninja.qa.testcases.LoginTest</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;com.tutorialsninja.qa.listeners.QAListeners.printLog(String)&quot; because &quot;this.logs&quot; is null
-	at com.tutorialsninja.qa.testcases.LoginTest.verifyLoginWithValidCresentials(LoginTest.java:48)
+<td><div><pre>java.lang.AssertionError: Not landed on the Account Page expected [Edit your accoun information] but found [Edit your account information]
+	at com.tutorialsninja.qa.testcases.LoginTest.verifyLoginWithValidCresentials(LoginTest.java:55)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1623)
-... Removed 10 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1901838314", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1901838314'><pre>java.lang.NullPointerException: Cannot invoke &quot;com.tutorialsninja.qa.listeners.QAListeners.printLog(String)&quot; because &quot;this.logs&quot; is null
-	at com.tutorialsninja.qa.testcases.LoginTest.verifyLoginWithValidCresentials(LoginTest.java:48)
+... Removed 15 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1931818324", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1931818324'><pre>java.lang.AssertionError: Not landed on the Account Page expected [Edit your accoun information] but found [Edit your account information]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1413)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:149)
+	at org.testng.Assert.assertEquals(Assert.java:131)
+	at org.testng.Assert.assertEquals(Assert.java:655)
+	at com.tutorialsninja.qa.testcases.LoginTest.verifyLoginWithValidCresentials(LoginTest.java:55)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -99,8 +104,8 @@ function toggleAllBoxes() {
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1623)
 </pre></div></td>
-<td>0</td>
-<td>com.tutorialsninja.qa.testcases.LoginTest@1a677343</td></tr>
+<td>1</td>
+<td>com.tutorialsninja.qa.testcases.LoginTest@68878f6d</td></tr>
 </table><p>
 </body>
 </html>

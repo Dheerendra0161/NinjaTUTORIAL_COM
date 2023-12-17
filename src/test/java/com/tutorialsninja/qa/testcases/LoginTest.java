@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 import com.tutorialsninja.qa.base.Base;
-import com.tutorialsninja.qa.listeners.QAListeners;
+import com.tutorialsninja.qa.pages.AccountPage;
 import com.tutorialsninja.qa.pages.HomePage;
 import com.tutorialsninja.qa.pages.LoginPage;
 import com.tutorialsninja.qa.utils.Utilities;
@@ -21,8 +21,9 @@ public class LoginTest extends Base {
 	public WebDriver driver;
 
 	LoginPage loginPage;
+	AccountPage accountPage;
 
-	QAListeners logs;
+	// Listeners listener;
 
 	public LoginTest() throws IOException {
 		super();
@@ -32,41 +33,35 @@ public class LoginTest extends Base {
 
 	@BeforeMethod
 	public void setup() {
-		System.setProperty("webdriver.http.factory", "jdk-http-client"); // Just to launch chrome setting after updation
 		driver = initializeBrowserAndOpenApplicationURL(prop.getProperty("browser"));
 		HomePage homepage = new HomePage(driver);
 		loginPage = homepage.navaigateToLoginPage();
+		accountPage=new AccountPage(driver);
+		
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		// driver.quit();
+		//driver.quit();
 	}
 
 	@Test(priority = 1, groups = { "Smoke", "Sanity" })
 	public void verifyLoginWithValidCresentials() {
 
-		// We are using logs for reporting like Cucumber
-		logs.printLog("Login with valid credential");
+	
 		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Email"), prop.getProperty("Password"));
+		Assert.assertEquals(accountPage.EditAccount(), "Edit your account information", "Not landed on the Account Page");
 
-		logs.printLog("Successfully verify dashboard");
-		// steps
-
-		logs.printLog("Navigate to register link");
-		// steps
+		
 
 	}
 
 	@Test(priority = -1, groups = { "Smoke", "Sanity" })
 	public void Failed_verifyLoginWithValidCresentials() {
-		logs.printLog("Login with valid credential");
-		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Emai"), prop.getProperty("Password"));
 
-		logs.printLog("Successfully verify dashboard");
-		// steps
-
-		logs.printLog("Navigate to register link");
+		// listener.printLog("Login with valid credential");
+		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Email"), prop.getProperty("Password"));
+		// listener.printLog("Successfully verify dashboard");
 		// steps
 
 	}
@@ -75,8 +70,6 @@ public class LoginTest extends Base {
 	// alphabetical order
 	// Priority:(Negative(-ve)value>without priority(0)ie.Alphabatic
 	// sequence>Positive(+ve) value
-	
-	
 
 	@Test(priority = 2, groups = { "Sanity" })
 	public void verifyLoginWithInvalidCredentials() {
@@ -86,23 +79,22 @@ public class LoginTest extends Base {
 		Assert.assertTrue(loginPage.warningMessage());
 	}
 
-	
-	
 	@Test(priority = 3)
 	public void verifyLoginWithInvalidEmailAndValidPassword() {
 		loginPage.LoginEmailPasswordClickLogin(Utilities.generateEmailTimeStamp(), prop.getProperty("Password"));
-
+		Assert.assertTrue(loginPage.warningMessage());
 	}
 
 	@Test(priority = 4)
 	public void verifyLoginWith_ValidEmailAnd_InvalidPassword() {
 		loginPage.LoginEmailPasswordClickLogin(prop.getProperty("Email"), dataProp.getProperty("invalidpassword"));
-
+		Assert.assertTrue(loginPage.warningMessage());
 	}
 
 	@Test(priority = 5, dataProvider = "excelData")
 	public void verifyLoginWith_ValidEmailAnd_InvalidPassword1(String Email, String Password) throws IOException {
 		loginPage.LoginEmailPasswordClickLogin(Email, Password);
+		Assert.assertTrue(loginPage.warningMessage());
 	}
 
 	@DataProvider(name = "excelData")
